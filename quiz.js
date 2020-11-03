@@ -9,21 +9,13 @@ const choiceD = document.getElementById("D");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 const submit = document.getElementById("submit");
-const scoreDiv = document.getElementById("scoreContainer"); 
-
-
-//this is an example
+const scoreDiv = document.getElementById("scoreContainer");
 
 // create our questions
 let questions = [
   {
     question: "In what year was the first iphone released?",
-    choice: [
-      "2007",
-      "2010",
-      "2000",
-      "2004",
-    ],
+    choice: ["2007", "2010", "2000", "2004"],
     correct: "0",
   },
   {
@@ -39,49 +31,47 @@ let questions = [
   {
     question:
       "In the Harry Potter book series, which character is described as having a “wild, tangled beard”?",
-    choice: [
-      "Harry",
-      "Dumbledore",
-      "Hagrid",
-      "Voldemort",
-    ],
+    choice: ["Harry", "Dumbledore", "Hagrid", "Voldemort"],
     correct: "2",
   },
   {
     question: "What is the busiest airport in Britain called?",
-    choice: [
-      "Gatwick",
-      "London Heathrow",
-      "John F. Kennedy",
-      "Stewart",
-    ],
+    choice: ["Gatwick", "London Heathrow", "John F. Kennedy", "Stewart"],
     correct: "1",
   },
   {
     question: "How many hearts does an octopus have?",
-    choice: [
-      "Three",
-      "One",
-      "Two",
-      "Eight",
-    ],
+    choice: ["Three", "One", "Two", "Eight"],
     correct: "0",
-  }
+  },
 ];
 
-// load questionq 
+// load questionq
 //gets access to the quest then change the innerHTML of the right elem
 let i = 0;
 let currentQuestion = 0; //index of the first quest - zero
 function renderQuestion() {
-  
   let q = questions[currentQuestion];
-  
+
+  // question.innerHTML = "<p>" + q.question + "</p>";
+  // choiceA.innerHTML = `<input type="radio" name = "ans${currentQuestion}"  id="ans" value = "q.choice[i]">` + q.choice[i];
+  // choiceB.innerHTML = `<input type="radio" name = "ans${currentQuestion}" id="ans"  value = "q.choice[i + 1]">` + q.choice[i + 1];
+  // choiceC.innerHTML = `<input type="radio" name = "ans${currentQuestion}" id="ans"  value = "q.choice[i + 2]">` + q.choice[i + 2];
+  // choiceD.innerHTML = `<input type="radio" name = "ans${currentQuestion}" id="ans"  value = "q.choice[i + 3]">` + q.choice[i + 3];
+
   question.innerHTML = "<p>" + q.question + "</p>";
-  choiceA.innerHTML = `<input type="radio" name = "ans${currentQuestion}"  id="ans" value = "q.choice[i]">` + q.choice[i];
-  choiceB.innerHTML = `<input type="radio" name = "ans${currentQuestion}" id="ans"  value = "q.choice[i + 1]">` + q.choice[i + 1];
-  choiceC.innerHTML = `<input type="radio" name = "ans${currentQuestion}" id="ans"  value = "q.choice[i + 2]">` + q.choice[i + 2];
-  choiceD.innerHTML = `<input type="radio" name = "ans${currentQuestion}" id="ans"  value = "q.choice[i + 3]">` + q.choice[i + 3];
+  choiceA.innerHTML =
+    `<input type="radio" name = "ans${currentQuestion}"  id="ans" value = "0">` +
+    q.choice[i];
+  choiceB.innerHTML =
+    `<input type="radio" name = "ans${currentQuestion}" id="ans"  value = "1">` +
+    q.choice[i + 1];
+  choiceC.innerHTML =
+    `<input type="radio" name = "ans${currentQuestion}" id="ans"  value = "2">` +
+    q.choice[i + 2];
+  choiceD.innerHTML =
+    `<input type="radio" name = "ans${currentQuestion}" id="ans"  value = "3">` +
+    q.choice[i + 3];
 }
 
 //when page is loaded click on start quiz
@@ -90,24 +80,23 @@ start.addEventListener("click", startQuiz);
 // start quiz
 function startQuiz() {
   start.style.display = "none";
-  quiz.style.display = "block"; 
+  quiz.style.display = "block";
   renderQuestion();
 
   if (currentQuestion == 0) {
     prev.style.display = "none";
-      }
+  }
 }
 
 if (currentQuestion == 0) {
   prev.style.display = "none";
-    }
-    if (currentQuestion > 0) {
-      prev.style.display = "block";
-    } 
+}
+if (currentQuestion > 0) {
+  prev.style.display = "block";
+}
 // checkAnwer
 let numCorrect = 0;
-let lastQuestion = questions.length -1; //index of the last quest
-
+let lastQuestion = questions.length - 1; //index of the last quest
 
 //progress bar
 function progressBar(n) {
@@ -121,44 +110,64 @@ function progressBar(n) {
   }
 }
 
-
 function previous() {
   if (currentQuestion > 0) {
     renderQuestion();
     currentQuestion--;
     progressBar(currentQuestion);
     prev.style.display = "inline-block";
-    console.log(currentQuestion)
-    
-    
-  }  
-    if(currentQuestion == 0) {
+    console.log(currentQuestion);
+  }
+  if (currentQuestion == 0) {
     renderQuestion();
-     prev.style.display = "none";
-     console.log(currentQuestion)
-     
-    
-   }
+    prev.style.display = "none";
+    console.log(currentQuestion);
+  }
+  if(currentQuestion < lastQuestion){
+    next.style.display = "inline-block";
+  }
 }
 
+let arr = [];
+viewAnswer = () => {
+  var element = document.getElementsByTagName("input");
+
+  for (let i = 0; i < element.length; i++) {
+    if ((element[i].type = "radio")) {
+      if (element[i].checked) {
+        console.log(element[i].value);
+        arr.push(element[i].value);
+      }
+    }
+  }
+  console.log("In Array: " + arr);
+};
+
 function nextBtn() {
-  if (currentQuestion < lastQuestion) {
+  if (currentQuestion <= lastQuestion) {
+    viewAnswer();
     currentQuestion++;
     renderQuestion();
     //submit.style.display = "none";
     progressBar(currentQuestion);
-   
-        if (currentQuestion > 0) {
-          prev.style.display = "inline-block";
-        } 
+
+    if (currentQuestion > 0) {
+      prev.style.display = "inline-block";
+    }
   }
+
+  if (currentQuestion >= lastQuestion) {
+    next.style.display = "none";
+  }
+  
 }
 
 function submitBtn() {
+  console.log(arr);
   console.log(currentQuestion);
-    console.log(lastQuestion);
-  if ((currentQuestion == lastQuestion)) {
-    
+  console.log(lastQuestion);
+  if (currentQuestion == lastQuestion) {
+    viewAnswer();
     // submit.style.display = "inline-block";
     // next.style.display = "none";
     checkAnswer();
@@ -170,33 +179,38 @@ function submitBtn() {
 let score = 0;
 function scoreRender() {
   scoreDiv.style.display = "block";
-  //clculate amt of quest percent answered 
-  const scorePercent = Math.round(100 * score / questions.length);
-  scoreDiv.innerHTML += "<p>" + scorePercent +"%</p>";
+  //clculate amt of quest percent answered
+  const scorePercent = Math.round((100 * score) / questions.length);
+  scoreDiv.innerHTML += "<p>" + scorePercent + "%</p>";
 }
 
 //check answer
 function checkAnswer() {
-let arr=[];
-for (let i = 0; i < questions.length; i++) {
-  var answers = (document.querySelectorAll(`input[name=ans${i}]:checked`) || {});
-  arr.push(answers);
-  
-}
-  
-  
+  // let arr=[];
+  // for (let i = 0; i < questions.length; i++) {
+  //   var answers = (document.querySelectorAll(`input[name=ans${i}]:checked`) || {});
+  //   arr.push(answers);
 
-  
-  console.log(arr);
-  if (answers.checked == questions[currentQuestion].correct) {
-    score ++;
-    answers.style.backgroundColor = "green";
-  }
-  else {
-    answers.style.backgroundColor = "red";
-  }
-}
+  // }
 
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == questions[i].correct) {
+      console.log("correct answer will be here");
+      score++
+    }
+    else{
+      console.log("Incorrect answer");
+    }
+  }
+
+  // console.log(arr + "array found in checkAnswer");
+  // if (answers.checked == questions[currentQuestion].correct) {
+  //   score++;
+  //   answers.style.backgroundColor = "green";
+  // } else {
+  //   answers.style.backgroundColor = "red";
+  // }
+}
 
 //database
 var db;
@@ -234,6 +248,7 @@ request.onupgradeneeded = function (event) {
       question: questions.question,
       choice: questions.choice,
       correct: questions.correct,
+      answer: questions.answer,
     });
   });
 };
