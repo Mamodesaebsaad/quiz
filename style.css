@@ -1,0 +1,162 @@
+body {
+  font-size: 20px;
+  font-family: monospace;
+  align-content: center;
+  justify-content: center;
+}
+
+#container {
+  margin: 20px auto;
+  background-color: rgb(255, 255, 255);
+  height: 700px;
+  width: 1000px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px 0px;
+  position: relative;
+}
+#start {
+  font-size: 1.5em;
+  font-weight: bolder;
+  word-break: break-all;
+  width: 200px;
+  height: 150px;
+  border: 3px solid rgb(30, 17, 105);
+  border-radius: 15px;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  left: 400px;
+  top: 70px;
+  color: rgb(30, 17, 105);
+  margin-top: 100px;
+  padding-top: 80px;
+}
+#start:hover {
+  border: 3px solid lightseagreen;
+  color: lightseagreen;
+}
+#question {
+  width: 700px;
+  height: 125px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#question p {
+  margin: 0;
+  margin-right: 500px;
+  margin-top: 35px;
+  font-size: 1.25em;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+}
+
+#choices {
+  width: 550px;
+  position: absolute;
+  right: 0;
+  top: 125px;
+  padding-right: 25px;
+  margin-top: 55px;
+  padding-bottom: 10px;
+}
+.choice {
+  margin-bottom: 5px;
+  width: 135px;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px;
+}
+.choice:hover {
+  font-weight: bold;
+  color: rgb(30, 17, 105);}
+
+
+#progress {
+  width: 500px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 5px;
+  text-align: right;
+}
+.prog {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #000;
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#scoreContainer {
+  margin: 20px auto;
+  background-color: white;
+  opacity: 0.8;
+  height: 300px;
+  width: 700px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px 0px;
+  position: relative;
+  display: none;
+}
+#scoreContainer img {
+  position: absolute;
+  top: 100px;
+  left: 325px;
+}
+#scoreContainer p {
+  position: absolute;
+  display: block;
+  width: 59px;
+  height: 59px;
+  top: 130px;
+  left: 325px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+.btn {
+  border: none;
+  outline: none;
+  background: black;
+  padding: 10px 30px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  margin: 10px auto;
+}
+
+.btn:hover {
+  background:lightseagreen;
+}
+.button {
+  width: 400px;
+  bottom: 0px;
+  right: 45%;
+  padding: 5px;
+  text-align: right;
+  padding-bottom: 85px;
+  margin-left: 300px;
+  padding-top: 550px;
+}
+#progress{
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(43, 194, 83);
+  background-image: linear-gradient(
+    center bottom,
+    rgb(43, 194, 83) 37%,
+    rgb(84, 240, 84) 69%
+  );
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}

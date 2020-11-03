@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="start">Start Quiz!</div>
+        <div id="quiz" style="display: none">
+            <div id="progress"></div>
+            <div id="question"></div>
+            <div id="choices">
+                <div class="choice" id="A" ></div>
+                <div class="choice" id="B" ></div>
+                <div class="choice" id="C" ></div>
+                <div class="choice" id="D" ></div>
+            </div>
+
+            <div class="button">
+                <button class="btn" id="prev" onclick="previous()">Previous</button>
+                <button class="btn" id="next" onclick="nextBtn()">Next</button>
+                <button class="btn" id="submit" onclick="submitBtn()">Submit</button>
+            </div>
+            
+                 
+            
+        </div>
+        <div id="scoreContainer" style="display: none"></div>
+    </div>
+    <script src="quiz.js"></script>
+
+</body>
+
+</html>
