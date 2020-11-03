@@ -11,6 +11,9 @@ const next = document.getElementById("next");
 const submit = document.getElementById("submit");
 const scoreDiv = document.getElementById("scoreContainer"); 
 
+
+//this is an example
+
 // create our questions
 let questions = [
   {
